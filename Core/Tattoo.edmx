@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TattooParlorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BodyPart">
+          <Key>
+            <PropertyRef Name="IdBodyPart" />
+          </Key>
+          <Property Name="IdBodyPart" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="IdRequest" />
+          </Key>
+          <Property Name="IdRequest" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdTattoo" Type="int" />
+          <Property Name="IdBodyPart" Type="int" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tattoo">
+          <Key>
+            <PropertyRef Name="IdTattoo" />
+          </Key>
+          <Property Name="IdTattoo" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="IdTattooType" Type="int" />
+          <Property Name="Image" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TattooType">
+          <Key>
+            <PropertyRef Name="IdTattoType" />
+          </Key>
+          <Property Name="IdTattoType" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Login" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Request_BodyPart">
+          <End Role="BodyPart" Type="Self.BodyPart" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BodyPart">
+              <PropertyRef Name="IdBodyPart" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdBodyPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Tattoo">
+          <End Role="Tattoo" Type="Self.Tattoo" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tattoo">
+              <PropertyRef Name="IdTattoo" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdTattoo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tattoo_TattoType">
+          <End Role="TattooType" Type="Self.TattooType" Multiplicity="0..1" />
+          <End Role="Tattoo" Type="Self.Tattoo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TattooType">
+              <PropertyRef Name="IdTattoType" />
+            </Principal>
+            <Dependent Role="Tattoo">
+              <PropertyRef Name="IdTattooType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TattooParlorModelStoreContainer">
+          <EntitySet Name="BodyPart" EntityType="Self.BodyPart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tattoo" EntityType="Self.Tattoo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TattooType" EntityType="Self.TattooType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Request_BodyPart" Association="Self.FK_Request_BodyPart">
+            <End Role="BodyPart" EntitySet="BodyPart" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Tattoo" Association="Self.FK_Request_Tattoo">
+            <End Role="Tattoo" EntitySet="Tattoo" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_User" Association="Self.FK_Request_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tattoo_TattoType" Association="Self.FK_Tattoo_TattoType">
+            <End Role="TattooType" EntitySet="TattooType" />
+            <End Role="Tattoo" EntitySet="Tattoo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TattooParlorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TattooParlorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BodyPart" EntityType="TattooParlorModel.BodyPart" />
+          <EntitySet Name="Request" EntityType="TattooParlorModel.Request" />
+          <EntitySet Name="sysdiagrams" EntityType="TattooParlorModel.sysdiagrams" />
+          <EntitySet Name="Tattoo" EntityType="TattooParlorModel.Tattoo" />
+          <EntitySet Name="TattooType" EntityType="TattooParlorModel.TattooType" />
+          <EntitySet Name="User" EntityType="TattooParlorModel.User" />
+          <AssociationSet Name="FK_Request_BodyPart" Association="TattooParlorModel.FK_Request_BodyPart">
+            <End Role="BodyPart" EntitySet="BodyPart" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_Tattoo" Association="TattooParlorModel.FK_Request_Tattoo">
+            <End Role="Tattoo" EntitySet="Tattoo" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Request_User" Association="TattooParlorModel.FK_Request_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tattoo_TattoType" Association="TattooParlorModel.FK_Tattoo_TattoType">
+            <End Role="TattooType" EntitySet="TattooType" />
+            <End Role="Tattoo" EntitySet="Tattoo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BodyPart">
+          <Key>
+            <PropertyRef Name="IdBodyPart" />
+          </Key>
+          <Property Name="IdBodyPart" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Request" Relationship="TattooParlorModel.FK_Request_BodyPart" FromRole="BodyPart" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="IdRequest" />
+          </Key>
+          <Property Name="IdRequest" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdTattoo" Type="Int32" />
+          <Property Name="IdBodyPart" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="BodyPart" Relationship="TattooParlorModel.FK_Request_BodyPart" FromRole="Request" ToRole="BodyPart" />
+          <NavigationProperty Name="Tattoo" Relationship="TattooParlorModel.FK_Request_Tattoo" FromRole="Request" ToRole="Tattoo" />
+          <NavigationProperty Name="User" Relationship="TattooParlorModel.FK_Request_User" FromRole="Request" ToRole="User" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tattoo">
+          <Key>
+            <PropertyRef Name="IdTattoo" />
+          </Key>
+          <Property Name="IdTattoo" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdTattooType" Type="Int32" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Request" Relationship="TattooParlorModel.FK_Request_Tattoo" FromRole="Tattoo" ToRole="Request" />
+          <NavigationProperty Name="TattooType" Relationship="TattooParlorModel.FK_Tattoo_TattoType" FromRole="Tattoo" ToRole="TattooType" />
+        </EntityType>
+        <EntityType Name="TattooType">
+          <Key>
+            <PropertyRef Name="IdTattoType" />
+          </Key>
+          <Property Name="IdTattoType" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tattoo" Relationship="TattooParlorModel.FK_Tattoo_TattoType" FromRole="TattooType" ToRole="Tattoo" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Request" Relationship="TattooParlorModel.FK_Request_User" FromRole="User" ToRole="Request" />
+        </EntityType>
+        <Association Name="FK_Request_BodyPart">
+          <End Type="TattooParlorModel.BodyPart" Role="BodyPart" Multiplicity="0..1" />
+          <End Type="TattooParlorModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BodyPart">
+              <PropertyRef Name="IdBodyPart" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdBodyPart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_Tattoo">
+          <End Type="TattooParlorModel.Tattoo" Role="Tattoo" Multiplicity="0..1" />
+          <End Type="TattooParlorModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tattoo">
+              <PropertyRef Name="IdTattoo" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdTattoo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Request_User">
+          <End Type="TattooParlorModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="TattooParlorModel.Request" Role="Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="IdUser" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdUser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tattoo_TattoType">
+          <End Type="TattooParlorModel.TattooType" Role="TattooType" Multiplicity="0..1" />
+          <End Type="TattooParlorModel.Tattoo" Role="Tattoo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TattooType">
+              <PropertyRef Name="IdTattoType" />
+            </Principal>
+            <Dependent Role="Tattoo">
+              <PropertyRef Name="IdTattooType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TattooParlorModelStoreContainer" CdmEntityContainer="TattooParlorEntities">
+          <EntitySetMapping Name="BodyPart">
+            <EntityTypeMapping TypeName="TattooParlorModel.BodyPart">
+              <MappingFragment StoreEntitySet="BodyPart">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdBodyPart" ColumnName="IdBodyPart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Request">
+            <EntityTypeMapping TypeName="TattooParlorModel.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IdBodyPart" ColumnName="IdBodyPart" />
+                <ScalarProperty Name="IdTattoo" ColumnName="IdTattoo" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdRequest" ColumnName="IdRequest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TattooParlorModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tattoo">
+            <EntityTypeMapping TypeName="TattooParlorModel.Tattoo">
+              <MappingFragment StoreEntitySet="Tattoo">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="IdTattooType" ColumnName="IdTattooType" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdTattoo" ColumnName="IdTattoo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TattooType">
+            <EntityTypeMapping TypeName="TattooParlorModel.TattooType">
+              <MappingFragment StoreEntitySet="TattooType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdTattoType" ColumnName="IdTattoType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="TattooParlorModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
