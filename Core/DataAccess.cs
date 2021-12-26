@@ -24,6 +24,12 @@ namespace Core
             }
             return types;
         }
+        public static TattooType GetTattooType(int idTattooType)
+        {
+            List<TattooType> tattooTypes = GetTattooTypes();
+            var type = tattooTypes.Where(tt => tt.IdTattoType == idTattooType).FirstOrDefault();
+            return type;
+        }
 
         public static List<BodyPart> GetBodyParts()
         {
@@ -102,6 +108,20 @@ namespace Core
             return tattoos.Where(t => t.IdTattoo == idTattoo).FirstOrDefault();
         }
 
+        public static bool AddNewTattoo(Tattoo tattoo)
+        {
+            try
+            {
+                DBconnection.connection.Tattoo.Add(tattoo);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static void DeleteTattoo(int idTattoo)
         {
             List<Tattoo> tattoos = GetTattoos();
@@ -177,7 +197,21 @@ namespace Core
 
         public static List<Request> GetRequests()
         {
-            return new List<Request>(DBconnection.connection.Request); ;
+            List<Request> request = new List<Request>(DBconnection.connection.Request);
+            List<Request> requests = new List<Request>();
+            foreach (var r in request)
+            {
+                requests.Add(
+                    new Request
+                    {
+                        IdRequest = r.IdRequest,
+                        IdBodyPart = r.IdBodyPart,
+                        IdTattoo = r.IdTattoo,
+                        IdUser = r.IdUser,
+                        Date = r.Date
+                    });
+            }
+            return requests;
         }
 
         public static List<Request> GetRequests(User user)
@@ -185,6 +219,13 @@ namespace Core
             List<Request> requests = GetRequests();
             List<Request> currentUserRequests = requests.Where(r => r.IdUser == user.IdUser).ToList();
             return currentUserRequests;
+        }
+
+        public static Request GetRequest(int idRequest)
+        {
+            List<Request> requests = GetRequests();
+            Request request = requests.Where(r => r.IdRequest == idRequest).FirstOrDefault();
+            return request;
         }
     }
 }

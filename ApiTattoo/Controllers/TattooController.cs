@@ -47,5 +47,12 @@ namespace ApiTattoo.Controllers
             DataAccess.DeleteTattoo(result);
             return NoContent();
         }
+
+        [HttpPost]
+        public IActionResult Create(Tattoo tattoo)
+        {
+            DataAccess.AddNewTattoo(tattoo);
+            return NoContent();
+        }
     }
 }
