@@ -44,18 +44,34 @@ namespace WpfTattoo.Pages
 
         private void btnCreateClick(object sender, RoutedEventArgs e)
         {
-            Request request = new Request
+            try
             {
-                IdUser = currentUser.IdUser,
-                IdBodyPart = (cbBody.SelectedItem as BodyPart).IdBodyPart,
-                Date = dpDate.SelectedDate,
-                IdTattoo = dataAccess.GetTattoo(btnTattoo.Content.ToString()).IdTattoo
-            };
+                Request request = new Request
+                {
+                    IdUser = currentUser.IdUser,
+                    IdBodyPart = (cbBody.SelectedItem as BodyPart).IdBodyPart,
+                    Date = dpDate.SelectedDate.Value,
+                    IdTattoo = dataAccess.GetTattoo(btnTattoo.Content.ToString()).IdTattoo
+                };
 
-            dataAccess.AddNewRequest(request);
+                //int IdUser = currentUser.IdUser;
+                //int IdBodyPart = (cbBody.SelectedItem as BodyPart).IdBodyPart;
+                //DateTime Date = dpDate.SelectedDate.Value;
+                //int IdTattoo = dataAccess.GetTattoo(btnTattoo.Content.ToString()).IdTattoo;
+
+                if (dataAccess.AddNewRequest(request))
+                {
+                    NavigationService.GoBack();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Invalid data","Error");
+            }
+            
         }
 
-        private void btnBaclClick(object sender, RoutedEventArgs e)
+        private void btnBackClick(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
         }

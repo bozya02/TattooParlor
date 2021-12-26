@@ -24,7 +24,7 @@
 
         </Grid.RowDefinitions>
 
-        <Button Content="Back" HorizontalAlignment="Left" Click="btnBaclClick"/>
+        <Button Content="Back" HorizontalAlignment="Left" Click="btnBackClick"/>
 
         <TextBlock Text="New request" Grid.ColumnSpan="2" Grid.Row="0" FontSize="48"/>
         

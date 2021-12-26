@@ -85,6 +85,28 @@ namespace Core
                 return false;
             }
         }
+        
+        public bool AddNewRequest(int newIdUser, int newIdBodyPart, int newIdTattoo, DateTime newDate)
+        {
+            try
+            {
+                Request request = new Request
+                {
+                    IdUser = newIdUser,
+                    IdBodyPart = newIdBodyPart,
+                    IdTattoo = newIdTattoo,
+                    Date = newDate
+                };
+
+                DBconnection.connection.Request.Add(request);
+                DBconnection.connection.SaveChanges();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         public List<Request> GetRequests()
         {
