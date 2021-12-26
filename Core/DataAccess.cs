@@ -30,6 +30,15 @@ namespace Core
             return currentUser.Count == 1;
         }
 
+        public User GetUser(string login, string password)
+        {
+            ObservableCollection<User> users = new ObservableCollection<User>(DBconnection.connection.User);
+
+            var currentUser = users.Where(u => u.Login == login && u.Password == password).FirstOrDefault();
+
+            return currentUser;
+        }
+
         public List<Tattoo> GetTattoos()
         {
             return new List<Tattoo>(DBconnection.connection.Tattoo);

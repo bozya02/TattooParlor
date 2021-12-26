@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.32002.185
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{AC663E4B-84E1-4FB5-8875-A95028BDC7C3}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebTattoo", "WebTattoo\WebTattoo.csproj", "{8775D7FF-02B0-4F5B-819A-EDFB05D4832E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTattoo", "WpfTattoo\WpfTattoo.csproj", "{D31E6F57-813C-413A-A6A2-AC4E29509630}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{AC663E4B-84E1-4FB5-8875-A95028BDC7C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC663E4B-84E1-4FB5-8875-A95028BDC7C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC663E4B-84E1-4FB5-8875-A95028BDC7C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8775D7FF-02B0-4F5B-819A-EDFB05D4832E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8775D7FF-02B0-4F5B-819A-EDFB05D4832E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8775D7FF-02B0-4F5B-819A-EDFB05D4832E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8775D7FF-02B0-4F5B-819A-EDFB05D4832E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D31E6F57-813C-413A-A6A2-AC4E29509630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D31E6F57-813C-413A-A6A2-AC4E29509630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D31E6F57-813C-413A-A6A2-AC4E29509630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D31E6F57-813C-413A-A6A2-AC4E29509630}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
