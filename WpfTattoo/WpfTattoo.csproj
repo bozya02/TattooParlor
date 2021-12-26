@@ -73,6 +73,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\PageRequests.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +94,9 @@
     </Compile>
     <Compile Include="Pages\PageRegistration.xaml.cs">
       <DependentUpon>PageRegistration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageRequests.xaml.cs">
+      <DependentUpon>PageRequests.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageUser.xaml.cs">
       <DependentUpon>PageUser.xaml</DependentUpon>

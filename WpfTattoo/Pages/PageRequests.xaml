@@ -9,6 +9,8 @@
       Title="PageRequests">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
     </Grid>
 </Page>
