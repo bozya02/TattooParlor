@@ -21,11 +21,9 @@ namespace WpfTattoo.Pages
     /// </summary>
     public partial class PageAuthorization : Page
     {
-        public DataAccess dataAccess { get; set; }
         public PageAuthorization()
         {
             InitializeComponent();
-            dataAccess = new DataAccess();
         }
 
         private void btnSignUpClick(object sender, RoutedEventArgs e)
@@ -38,9 +36,9 @@ namespace WpfTattoo.Pages
             var login = tbLogin.Text;
             var password = pbPassword.Password;
 
-            if(dataAccess.IsCorrectLogin(login, password))
+            if(DataAccess.IsCorrectLogin(login, password))
             {
-                NavigationService.Navigate(new PageUser(dataAccess.GetUser(login, password)));
+                NavigationService.Navigate(new PageUser(DataAccess.GetUser(login, password)));
             }
             else
             {

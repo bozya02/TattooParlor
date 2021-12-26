@@ -28,7 +28,6 @@ namespace WpfTattoo.Pages
 
         private void btnSignUpClick(object sender, RoutedEventArgs e)
         {
-            var da = new DataAccess();
             User user = new User
             {
                 FirstName = tbFName.Text,
@@ -38,7 +37,7 @@ namespace WpfTattoo.Pages
                 Password = pbPassword.Password
             };
 
-            if (da.RegistrationUser(user))
+            if (DataAccess.RegistrationUser(user))
             {
                 MessageBox.Show("Registration is successful", "Successfully!");
                 NavigationService.GoBack();

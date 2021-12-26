@@ -22,12 +22,10 @@ namespace WpfTattoo.Windows
     {
         public List<Tattoo> tattoos { get; set; }
         public List<TattooType> tattooTypes { get; set; }
-        public DataAccess dataAccess { get; set; }
         public WindowSelectTattoo()
         {
             InitializeComponent();
-            dataAccess = new DataAccess();
-            tattooTypes = dataAccess.GetTattooTypes();
+            tattooTypes = DataAccess.GetTattooTypes();
             this.DataContext = this;
         }
 
@@ -40,7 +38,7 @@ namespace WpfTattoo.Windows
         private void cbTattooTypeSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var t = cbTattooType.SelectedItem as TattooType;
-            tattoos = dataAccess.GetTattoos(t.IdTattoType);
+            tattoos = DataAccess.GetTattoos(t.IdTattoType);
             lvTattoos.ItemsSource = tattoos;
         }
     }

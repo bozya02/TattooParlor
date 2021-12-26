@@ -22,14 +22,12 @@ namespace WpfTattoo.Pages
     public partial class PageCreateRequests : Page
     {
         public User currentUser { get; set; }
-        public DataAccess dataAccess { get; set; }
         public List<BodyPart> bodyParts { get; set; }
         public PageCreateRequests(User user)
         {
             InitializeComponent();
             currentUser = user;
-            dataAccess = new DataAccess();
-            bodyParts = dataAccess.GetBodyParts();
+            bodyParts = DataAccess.GetBodyParts();
             this.DataContext = this;
         }
 
@@ -46,20 +44,12 @@ namespace WpfTattoo.Pages
         {
             try
             {
-                //request request = new request
-                //{
-                //    iduser = currentuser.iduser,
-                //    idbodypart = (cbbody.selecteditem as bodypart).idbodypart,
-                //    date = dpdate.selecteddate.value,
-                //    idtattoo = dataaccess.gettattoo(btntattoo.content.tostring()).idtattoo
-                //};
-
                 int IdUser = currentUser.IdUser;
                 int IdBodyPart = (cbBody.SelectedItem as BodyPart).IdBodyPart;
                 DateTime Date = dpDate.SelectedDate.Value;
-                int IdTattoo = dataAccess.GetTattoo(btnTattoo.Content.ToString()).IdTattoo;
+                int IdTattoo = DataAccess.GetTattoo(btnTattoo.Content.ToString()).IdTattoo;
 
-                if (dataAccess.AddNewRequest(IdUser, IdBodyPart, IdTattoo, Date))
+                if (DataAccess.AddNewRequest(IdUser, IdBodyPart, IdTattoo, Date))
                 {
                     NavigationService.GoBack();
                 }

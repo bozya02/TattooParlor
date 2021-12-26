@@ -7,21 +7,48 @@ using System.Collections.ObjectModel;
 
 namespace Core
 {
-    public class DataAccess
+    public static class DataAccess
     {
-        public static TattooParlorEntities connection = new TattooParlorEntities();
-
-        public List<TattooType> GetTattooTypes()
+        public static List<TattooType> GetTattooTypes()
         {
-            return new List<TattooType>(connection.TattooType);
+            List<TattooType> tattooTypes = new List<TattooType>(DBconnection.connection.TattooType);
+            List<TattooType> types = new List<TattooType>();
+            foreach (var type in tattooTypes)
+            {
+                types.Add(
+                    new TattooType
+                    {
+                        IdTattoType = type.IdTattoType,
+                        Name = type.Name
+                    });
+            }
+            return types;
         }
 
-        public List<BodyPart> GetBodyParts()
+        public static List<BodyPart> GetBodyParts()
         {
-            return new List<BodyPart>(connection.BodyPart);
+            List<BodyPart> bodyParts = new List<BodyPart>(DBconnection.connection.BodyPart);
+            List<BodyPart> parts = new List<BodyPart>();
+            foreach (var part in bodyParts)
+            {
+                parts.Add(
+                    new BodyPart
+                    {
+                        IdBodyPart = part.IdBodyPart,
+                        Name = part.Name
+                    });
+            }
+            return parts;
         }
 
-        public bool IsCorrectLogin(string login, string password)
+        public static BodyPart GetBodyPart(int idBodyPart)
+        {
+            List<BodyPart> bodyParts = GetBodyParts();
+            var bPart = bodyParts.Where(bp => bp.IdBodyPart == idBodyPart).FirstOrDefault();
+            return bPart;
+        }
+
+        public static bool IsCorrectLogin(string login, string password)
         {
             ObservableCollection<User> users = new ObservableCollection<User>(DBconnection.connection.User);
 
@@ -30,7 +57,7 @@ namespace Core
             return currentUser.Count == 1;
         }
 
-        public User GetUser(string login, string password)
+        public static User GetUser(string login, string password)
         {
             ObservableCollection<User> users = new ObservableCollection<User>(DBconnection.connection.User);
 
@@ -39,25 +66,66 @@ namespace Core
             return currentUser;
         }
 
-        public List<Tattoo> GetTattoos()
+        public static List<Tattoo> GetTattoos()
         {
-            return new List<Tattoo>(DBconnection.connection.Tattoo);
+            List<Tattoo> tattoo = new List<Tattoo>(DBconnection.connection.Tattoo);
+            List<Tattoo> tattoos = new List<Tattoo>();
+            foreach (var t in tattoo)
+            {
+                tattoos.Add(
+                    new Tattoo
+                    {
+                        IdTattoo = t.IdTattoo,
+                        Name = t.Name,
+                        IdTattooType = t.IdTattooType,
+                        Image = t.Image
+                    });
+            }
+            return tattoos;
         }
 
-        public List<Tattoo> GetTattoos(int idTattooType)
+        public static List<Tattoo> GetTattoos(int idTattooType)
         {
-            ObservableCollection<Tattoo> tattoos = new ObservableCollection<Tattoo>(DBconnection.connection.Tattoo);
-
+            List<Tattoo> tattoos = GetTattoos();
             return tattoos.Where(a => a.IdTattooType == idTattooType).ToList();
         }
 
-        public Tattoo GetTattoo(string name)
+        public static Tattoo GetTattoo(string name)
         {
             List <Tattoo> tattoos = GetTattoos();
             return tattoos.Where(t => t.Name == name).FirstOrDefault();
         }
 
-        public bool RegistrationUser(User user)
+        public static Tattoo GetTattoo(int idTattoo)
+        {
+            List<Tattoo> tattoos = GetTattoos();
+            return tattoos.Where(t => t.IdTattoo == idTattoo).FirstOrDefault();
+        }
+
+        public static void DeleteTattoo(int idTattoo)
+        {
+            List<Tattoo> tattoos = GetTattoos();
+            var tattoo = tattoos.Where(t => t.IdTattoo == idTattoo).FirstOrDefault();
+
+            DBconnection.connection.Tattoo.Remove(tattoo);
+            DBconnection.connection.SaveChanges();
+        }
+
+        public static void UpdateTattoo(int idTattoo, Tattoo tattoo)
+        {
+
+            DBconnection.connection.Tattoo.SingleOrDefault(t => t.IdTattoo == idTattoo);
+            DBconnection.connection.SaveChanges();
+
+        }
+
+        public static void DeleteTattoo(Tattoo tattoo)
+        { 
+            DBconnection.connection.Tattoo.Remove(tattoo);
+            DBconnection.connection.SaveChanges();
+        }
+
+        public static bool RegistrationUser(User user)
         {
             try
             {
@@ -65,14 +133,13 @@ namespace Core
                 DBconnection.connection.SaveChanges();
                 return true;
             }
-
             catch
             {
                 return false;
             }
         }
 
-        public bool AddNewRequest(Request request)
+        public static bool AddNewRequest(Request request)
         {
             try
             {
@@ -86,7 +153,7 @@ namespace Core
             }
         }
         
-        public bool AddNewRequest(int newIdUser, int newIdBodyPart, int newIdTattoo, DateTime newDate)
+        public static bool AddNewRequest(int newIdUser, int newIdBodyPart, int newIdTattoo, DateTime newDate)
         {
             try
             {
@@ -108,12 +175,12 @@ namespace Core
             }
         }
 
-        public List<Request> GetRequests()
+        public static List<Request> GetRequests()
         {
             return new List<Request>(DBconnection.connection.Request); ;
         }
 
-        public List<Request> GetRequests(User user)
+        public static List<Request> GetRequests(User user)
         {
             List<Request> requests = GetRequests();
             List<Request> currentUserRequests = requests.Where(r => r.IdUser == user.IdUser).ToList();
