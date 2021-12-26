@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTattoo", "WpfTattoo\WpfTattoo.csproj", "{D31E6F57-813C-413A-A6A2-AC4E29509630}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTattoo", "ApiTattoo\ApiTattoo.csproj", "{10B3E99A-3477-4666-97B6-EBFDF5AC548B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D31E6F57-813C-413A-A6A2-AC4E29509630}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D31E6F57-813C-413A-A6A2-AC4E29509630}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D31E6F57-813C-413A-A6A2-AC4E29509630}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10B3E99A-3477-4666-97B6-EBFDF5AC548B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10B3E99A-3477-4666-97B6-EBFDF5AC548B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10B3E99A-3477-4666-97B6-EBFDF5AC548B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10B3E99A-3477-4666-97B6-EBFDF5AC548B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

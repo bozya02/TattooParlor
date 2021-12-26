@@ -124,12 +124,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Tattoo.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess.cs" />
     <Compile Include="Tattoo1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Tattoo.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess.cs" />
     <Compile Include="TattooType.cs">
       <DependentUpon>Tattoo.tt</DependentUpon>
     </Compile>

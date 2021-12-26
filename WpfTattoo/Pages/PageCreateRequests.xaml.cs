@@ -46,20 +46,20 @@ namespace WpfTattoo.Pages
         {
             try
             {
-                Request request = new Request
-                {
-                    IdUser = currentUser.IdUser,
-                    IdBodyPart = (cbBody.SelectedItem as BodyPart).IdBodyPart,
-                    Date = dpDate.SelectedDate.Value,
-                    IdTattoo = dataAccess.GetTattoo(btnTattoo.Content.ToString()).IdTattoo
-                };
+                //request request = new request
+                //{
+                //    iduser = currentuser.iduser,
+                //    idbodypart = (cbbody.selecteditem as bodypart).idbodypart,
+                //    date = dpdate.selecteddate.value,
+                //    idtattoo = dataaccess.gettattoo(btntattoo.content.tostring()).idtattoo
+                //};
 
-                //int IdUser = currentUser.IdUser;
-                //int IdBodyPart = (cbBody.SelectedItem as BodyPart).IdBodyPart;
-                //DateTime Date = dpDate.SelectedDate.Value;
-                //int IdTattoo = dataAccess.GetTattoo(btnTattoo.Content.ToString()).IdTattoo;
+                int IdUser = currentUser.IdUser;
+                int IdBodyPart = (cbBody.SelectedItem as BodyPart).IdBodyPart;
+                DateTime Date = dpDate.SelectedDate.Value;
+                int IdTattoo = dataAccess.GetTattoo(btnTattoo.Content.ToString()).IdTattoo;
 
-                if (dataAccess.AddNewRequest(request))
+                if (dataAccess.AddNewRequest(IdUser, IdBodyPart, IdTattoo, Date))
                 {
                     NavigationService.GoBack();
                 }

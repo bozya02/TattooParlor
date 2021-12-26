@@ -9,14 +9,14 @@
           <Key>
             <PropertyRef Name="IdBodyPart" />
           </Key>
-          <Property Name="IdBodyPart" Type="int" Nullable="false" />
+          <Property Name="IdBodyPart" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
             <PropertyRef Name="IdRequest" />
           </Key>
-          <Property Name="IdRequest" Type="int" Nullable="false" />
+          <Property Name="IdRequest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdUser" Type="int" />
           <Property Name="IdTattoo" Type="int" />
           <Property Name="IdBodyPart" Type="int" />
@@ -36,7 +36,7 @@
           <Key>
             <PropertyRef Name="IdTattoo" />
           </Key>
-          <Property Name="IdTattoo" Type="int" Nullable="false" />
+          <Property Name="IdTattoo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="IdTattooType" Type="int" />
           <Property Name="Image" Type="varchar(max)" />
@@ -45,14 +45,14 @@
           <Key>
             <PropertyRef Name="IdTattoType" />
           </Key>
-          <Property Name="IdTattoType" Type="int" Nullable="false" />
+          <Property Name="IdTattoType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="IdUser" />
           </Key>
-          <Property Name="IdUser" Type="int" Nullable="false" />
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="varchar" MaxLength="50" />
           <Property Name="LastName" Type="varchar" MaxLength="50" />
           <Property Name="Age" Type="int" />
@@ -163,7 +163,7 @@
           <Key>
             <PropertyRef Name="IdBodyPart" />
           </Key>
-          <Property Name="IdBodyPart" Type="Int32" Nullable="false" />
+          <Property Name="IdBodyPart" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Request" Relationship="TattooParlorModel.FK_Request_BodyPart" FromRole="BodyPart" ToRole="Request" />
         </EntityType>
@@ -171,7 +171,7 @@
           <Key>
             <PropertyRef Name="IdRequest" />
           </Key>
-          <Property Name="IdRequest" Type="Int32" Nullable="false" />
+          <Property Name="IdRequest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdUser" Type="Int32" />
           <Property Name="IdTattoo" Type="Int32" />
           <Property Name="IdBodyPart" Type="Int32" />
@@ -194,7 +194,7 @@
           <Key>
             <PropertyRef Name="IdTattoo" />
           </Key>
-          <Property Name="IdTattoo" Type="Int32" Nullable="false" />
+          <Property Name="IdTattoo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IdTattooType" Type="Int32" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -205,7 +205,7 @@
           <Key>
             <PropertyRef Name="IdTattoType" />
           </Key>
-          <Property Name="IdTattoType" Type="Int32" Nullable="false" />
+          <Property Name="IdTattoType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Tattoo" Relationship="TattooParlorModel.FK_Tattoo_TattoType" FromRole="TattooType" ToRole="Tattoo" />
         </EntityType>
@@ -213,7 +213,7 @@
           <Key>
             <PropertyRef Name="IdUser" />
           </Key>
-          <Property Name="IdUser" Type="Int32" Nullable="false" />
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Age" Type="Int32" />
@@ -269,7 +269,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

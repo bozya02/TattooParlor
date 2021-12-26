@@ -90,7 +90,7 @@ namespace Core
         {
             try
             {
-                Request request = new Request
+                Request request = new Request()
                 {
                     IdUser = newIdUser,
                     IdBodyPart = newIdBodyPart,
