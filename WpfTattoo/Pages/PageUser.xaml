@@ -25,8 +25,8 @@
         <TextBlock Text="{Binding currentUser.FirstName}" Grid.ColumnSpan="2" Grid.Row="1"/>
         <TextBlock Text="{Binding currentUser.LastName}" Grid.ColumnSpan="2" Grid.Row="2"/>
 
-        <Button Content="Create request" Grid.Column="0" Grid.Row="3"/>
-        <Button Content="My requests" Grid.Column="1" Grid.Row="3"/>
+        <Button Content="Create request" Grid.Column="0" Grid.Row="3" Click="brnCreateClick"/>
+        <Button Content="My requests" Grid.Column="1" Grid.Row="3" Click="btnMyRequestsClick"/>
 
     </Grid>
 </Page>

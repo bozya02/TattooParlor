@@ -65,7 +65,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Windows\WindowSelectTattoo.xaml.cs">
+      <DependentUpon>WindowSelectTattoo.xaml</DependentUpon>
+    </Compile>
     <Page Include="Pages\PageAuthorization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageCreateRequests.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -92,6 +99,9 @@
     <Compile Include="Pages\PageAuthorization.xaml.cs">
       <DependentUpon>PageAuthorization.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageCreateRequests.xaml.cs">
+      <DependentUpon>PageCreateRequests.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageRegistration.xaml.cs">
       <DependentUpon>PageRegistration.xaml</DependentUpon>
     </Compile>
@@ -105,6 +115,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\WindowSelectTattoo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -139,8 +153,44 @@
       <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Windows\" />
+    <Resource Include="img\anime1.jpg" />
+    <Resource Include="img\anime2.jpg" />
+    <Resource Include="img\anime3.jpg" />
+    <Resource Include="img\anime4.jpg" />
+    <Resource Include="img\anime5.jpg" />
+    <Resource Include="img\anime6.jpg" />
+    <Resource Include="img\card1.jpg" />
+    <Resource Include="img\card2.jpg" />
+    <Resource Include="img\card3.jpg" />
+    <Resource Include="img\card4.jpg" />
+    <Resource Include="img\card5.jpg" />
+    <Resource Include="img\card6.jpg" />
+    <Resource Include="img\joker1.jpg" />
+    <Resource Include="img\joker2.jpg" />
+    <Resource Include="img\joker3.jpg" />
+    <Resource Include="img\joker4.jpg" />
+    <Resource Include="img\joker5.jpg" />
+    <Resource Include="img\joker6.jpg" />
+    <Resource Include="img\rose1.jpg" />
+    <Resource Include="img\rose2.jpg" />
+    <Resource Include="img\rose3.jpg" />
+    <Resource Include="img\rose4.jpg" />
+    <Resource Include="img\rose5.jpg" />
+    <Resource Include="img\rose6.jpg" />
+    <Resource Include="img\triangle1.jpg" />
+    <Resource Include="img\triangle2.jpg" />
+    <Resource Include="img\triangle3.jpg" />
+    <Resource Include="img\triangle4.jpg" />
+    <Resource Include="img\triangle5.jpg" />
+    <Resource Include="img\triangle6.jpg" />
+    <Resource Include="img\wolf1.jpg" />
+    <Resource Include="img\wolf2.jpg" />
+    <Resource Include="img\wolf3.jpg" />
+    <Resource Include="img\wolf4.jpg" />
+    <Resource Include="img\wolf5.jpg" />
+    <Resource Include="img\wolf6.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

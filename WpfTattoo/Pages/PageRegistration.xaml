@@ -24,7 +24,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Authorization" Grid.ColumnSpan="2" Grid.Row="0" FontSize="48"/>
+        <Button Content="Back" HorizontalAlignment="Left" Click="btnBacClick"/>
+        <TextBlock Text="Registration" Grid.ColumnSpan="2" Grid.Row="0" FontSize="48"/>
         <TextBlock Text="First Name" Grid.Column="0" Grid.Row="1"/>
         <TextBlock Text="Last Name" Grid.Column="0" Grid.Row="2"/>
         <TextBlock Text="Age" Grid.Column="0" Grid.Row="3"/>

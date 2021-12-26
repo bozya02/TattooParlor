@@ -11,14 +11,34 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="4*"/>
         </Grid.RowDefinitions>
+
+        <TextBlock Text="My requests" Grid.ColumnSpan="2" Grid.Row="0" FontSize="48"/>
+
+        <Button Content="Back" Click="btnBackClick"/>
+
+        <ListView Grid.Column="1" Grid.Row="1" Margin="10" ItemsSource="{Binding requests}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Columns="2"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Tattoo.Name}"/>
+                        <Image Source="{Binding Tattoo.Image}" Width="100"/>
+                        <TextBlock Text="{Binding BodyPart.Name}"/>
+                        <TextBlock Text="{Binding Date}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

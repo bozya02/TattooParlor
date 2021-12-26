@@ -49,5 +49,10 @@ namespace WpfTattoo.Pages
             }
 
         }
+
+        private void btnBacClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+        }
     }
 }

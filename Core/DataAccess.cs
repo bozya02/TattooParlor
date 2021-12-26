@@ -51,6 +51,12 @@ namespace Core
             return tattoos.Where(a => a.IdTattooType == idTattooType).ToList();
         }
 
+        public Tattoo GetTattoo(string name)
+        {
+            List <Tattoo> tattoos = GetTattoos();
+            return tattoos.Where(t => t.Name == name).FirstOrDefault();
+        }
+
         public bool RegistrationUser(User user)
         {
             try
@@ -66,7 +72,7 @@ namespace Core
             }
         }
 
-        public bool AddNewReauest(Request request)
+        public bool AddNewRequest(Request request)
         {
             try
             {
@@ -87,14 +93,8 @@ namespace Core
 
         public List<Request> GetRequests(User user)
         {
-            ObservableCollection<Request> requests = new ObservableCollection<Request>(DBconnection.connection.Request);
+            List<Request> requests = GetRequests();
             List<Request> currentUserRequests = requests.Where(r => r.IdUser == user.IdUser).ToList();
-            return currentUserRequests;
-        }
-
-        public List<Request> GetRequests(User user, BodyPart bodyPart)
-        {
-            List<Request> currentUserRequests = GetRequests(user).Where(r => r.IdBodyPart == bodyPart.IdBodyPart).ToList();
             return currentUserRequests;
         }
     }

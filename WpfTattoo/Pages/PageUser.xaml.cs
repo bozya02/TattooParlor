@@ -28,5 +28,15 @@ namespace WpfTattoo.Pages
             currentUser = user;
             this.DataContext = this;
         }
+
+        private void btnMyRequestsClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.PageRequests(currentUser));
+        }
+
+        private void brnCreateClick(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Pages.PageCreateRequests(currentUser));
+        }
     }
 }
