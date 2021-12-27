@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace WpfTattoo.Pages
     public partial class PageCreateRequests : Page
     {
         public User currentUser { get; set; }
-        public List<BodyPart> bodyParts { get; set; }
+        public ObservableCollection<BodyPart> bodyParts { get; set; }
         public PageCreateRequests(User user)
         {
             InitializeComponent();

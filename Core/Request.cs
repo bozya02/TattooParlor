@@ -19,9 +19,5 @@ namespace Core
         public Nullable<int> IdTattoo { get; set; }
         public Nullable<int> IdBodyPart { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
-    
-        public virtual BodyPart BodyPart { get; set; }
-        public virtual Tattoo Tattoo { get; set; }
-        public virtual User User { get; set; }
     }
 }

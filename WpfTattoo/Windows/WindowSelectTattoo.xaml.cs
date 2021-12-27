@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Core;
+using System.Collections.ObjectModel;
 
 namespace WpfTattoo.Windows
 {
@@ -21,7 +22,7 @@ namespace WpfTattoo.Windows
     public partial class WindowSelectTattoo : Window
     {
         public List<Tattoo> tattoos { get; set; }
-        public List<TattooType> tattooTypes { get; set; }
+        public ObservableCollection<TattooType> tattooTypes { get; set; }
         public WindowSelectTattoo()
         {
             InitializeComponent();

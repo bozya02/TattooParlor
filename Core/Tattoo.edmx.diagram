@@ -5,16 +5,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="4c813a7040fc4d13b73e9d5f115ef461" Name="Diagram1">
-        <EntityTypeShape EntityType="TattooParlorModel.BodyPart" Width="1.5" PointX="3" PointY="8.5" />
-        <EntityTypeShape EntityType="TattooParlorModel.Request" Width="1.5" PointX="5.25" PointY="1" />
-        <EntityTypeShape EntityType="TattooParlorModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" />
-        <EntityTypeShape EntityType="TattooParlorModel.Tattoo" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="TattooParlorModel.TattooType" Width="1.5" PointX="0.75" PointY="1.375" />
-        <EntityTypeShape EntityType="TattooParlorModel.User" Width="1.5" PointX="3" PointY="5.375" />
-        <AssociationConnector Association="TattooParlorModel.FK_Request_BodyPart" />
-        <AssociationConnector Association="TattooParlorModel.FK_Request_Tattoo" />
-        <AssociationConnector Association="TattooParlorModel.FK_Request_User" />
-        <AssociationConnector Association="TattooParlorModel.FK_Tattoo_TattoType" />
+        <EntityTypeShape EntityType="TattooParlorModel.BodyPart" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TattooParlorModel.Request" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TattooParlorModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TattooParlorModel.Tattoo" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="TattooParlorModel.TattooType" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TattooParlorModel.User" Width="1.5" PointX="4.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

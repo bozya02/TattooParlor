@@ -25,29 +25,6 @@ namespace ApiTattoo.Controllers
             return result;
         }
 
-        [HttpPut("{idTattoo}")]
-        public IActionResult Update(int idTattoo, Tattoo tattoo)
-        {
-            var result = DataAccess.GetTattoo(idTattoo);
-            if (result == null)
-                return NotFound();
-
-            DataAccess.UpdateTattoo(idTattoo, tattoo);
-
-            return NoContent();
-        }
-
-        [HttpDelete("{idTattoo}")]
-        public IActionResult Delete(int idTattoo)
-        {
-            var result = DataAccess.GetTattoo(idTattoo);
-            if (result == null)
-                return NotFound();
-
-            DataAccess.DeleteTattoo(result);
-            return NoContent();
-        }
-
         [HttpPost]
         public IActionResult Create(Tattoo tattoo)
         {

@@ -9,47 +9,27 @@ namespace Core
 {
     public static class DataAccess
     {
-        public static List<TattooType> GetTattooTypes()
+        public static ObservableCollection<TattooType> GetTattooTypes()
         {
-            List<TattooType> tattooTypes = new List<TattooType>(DBconnection.connection.TattooType);
-            List<TattooType> types = new List<TattooType>();
-            foreach (var type in tattooTypes)
-            {
-                types.Add(
-                    new TattooType
-                    {
-                        IdTattoType = type.IdTattoType,
-                        Name = type.Name
-                    });
-            }
-            return types;
+            ObservableCollection<TattooType> tattooTypes = new ObservableCollection<TattooType>(DBconnection.connection.TattooType);
+            return tattooTypes;
         }
         public static TattooType GetTattooType(int idTattooType)
         {
-            List<TattooType> tattooTypes = GetTattooTypes();
+            ObservableCollection<TattooType> tattooTypes = GetTattooTypes();
             var type = tattooTypes.Where(tt => tt.IdTattoType == idTattooType).FirstOrDefault();
             return type;
         }
 
-        public static List<BodyPart> GetBodyParts()
+        public static ObservableCollection<BodyPart> GetBodyParts()
         {
-            List<BodyPart> bodyParts = new List<BodyPart>(DBconnection.connection.BodyPart);
-            List<BodyPart> parts = new List<BodyPart>();
-            foreach (var part in bodyParts)
-            {
-                parts.Add(
-                    new BodyPart
-                    {
-                        IdBodyPart = part.IdBodyPart,
-                        Name = part.Name
-                    });
-            }
-            return parts;
+            ObservableCollection<BodyPart> bodyParts = new ObservableCollection<BodyPart>(DBconnection.connection.BodyPart);
+            return bodyParts;
         }
 
         public static BodyPart GetBodyPart(int idBodyPart)
         {
-            List<BodyPart> bodyParts = GetBodyParts();
+            ObservableCollection<BodyPart> bodyParts = GetBodyParts();
             var bPart = bodyParts.Where(bp => bp.IdBodyPart == idBodyPart).FirstOrDefault();
             return bPart;
         }
@@ -81,39 +61,27 @@ namespace Core
             return currentUser;
         }
 
-        public static List<Tattoo> GetTattoos()
+        public static ObservableCollection<Tattoo> GetTattoos()
         {
-            List<Tattoo> tattoo = new List<Tattoo>(DBconnection.connection.Tattoo);
-            List<Tattoo> tattoos = new List<Tattoo>();
-            foreach (var t in tattoo)
-            {
-                tattoos.Add(
-                    new Tattoo
-                    {
-                        IdTattoo = t.IdTattoo,
-                        Name = t.Name,
-                        IdTattooType = t.IdTattooType,
-                        Image = t.Image
-                    });
-            }
+            ObservableCollection<Tattoo> tattoos = new ObservableCollection<Tattoo>(DBconnection.connection.Tattoo);
             return tattoos;
         }
 
         public static List<Tattoo> GetTattoos(int idTattooType)
         {
-            List<Tattoo> tattoos = GetTattoos();
+            ObservableCollection<Tattoo> tattoos = GetTattoos();
             return tattoos.Where(a => a.IdTattooType == idTattooType).ToList();
         }
 
         public static Tattoo GetTattoo(string name)
         {
-            List <Tattoo> tattoos = GetTattoos();
+            ObservableCollection<Tattoo> tattoos = GetTattoos();
             return tattoos.Where(t => t.Name == name).FirstOrDefault();
         }
 
         public static Tattoo GetTattoo(int idTattoo)
         {
-            List<Tattoo> tattoos = GetTattoos();
+            ObservableCollection<Tattoo> tattoos = GetTattoos();
             return tattoos.Where(t => t.IdTattoo == idTattoo).FirstOrDefault();
         }
 
@@ -131,26 +99,24 @@ namespace Core
             }
         }
 
-        public static void DeleteTattoo(int idTattoo)
+        public static void DeleteRequest(int idRequest)
         {
-            List<Tattoo> tattoos = GetTattoos();
-            var tattoo = tattoos.Where(t => t.IdTattoo == idTattoo).FirstOrDefault();
+            Request request = GetRequest(idRequest);
 
-            DBconnection.connection.Tattoo.Remove(tattoo);
+            DBconnection.connection.Request.Remove(request);
             DBconnection.connection.SaveChanges();
         }
 
-        public static void UpdateTattoo(int idTattoo, Tattoo tattoo)
+        public static void UpdtaeRequest(int idRequest, Request request)
         {
-
-            DBconnection.connection.Tattoo.SingleOrDefault(t => t.IdTattoo == idTattoo);
+            DBconnection.connection.Request.SingleOrDefault(r => r.IdRequest == idRequest);
             DBconnection.connection.SaveChanges();
 
         }
 
-        public static void DeleteTattoo(Tattoo tattoo)
-        { 
-            DBconnection.connection.Tattoo.Remove(tattoo);
+        public static void DeleteRequest(Request request)
+        {
+            DBconnection.connection.Request.Remove(request);
             DBconnection.connection.SaveChanges();
         }
 

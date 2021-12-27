@@ -59,54 +59,6 @@
           <Property Name="Login" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK_Request_BodyPart">
-          <End Role="BodyPart" Type="Self.BodyPart" Multiplicity="0..1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BodyPart">
-              <PropertyRef Name="IdBodyPart" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="IdBodyPart" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Request_Tattoo">
-          <End Role="Tattoo" Type="Self.Tattoo" Multiplicity="0..1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tattoo">
-              <PropertyRef Name="IdTattoo" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="IdTattoo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Request_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="IdUser" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tattoo_TattoType">
-          <End Role="TattooType" Type="Self.TattooType" Multiplicity="0..1" />
-          <End Role="Tattoo" Type="Self.Tattoo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TattooType">
-              <PropertyRef Name="IdTattoType" />
-            </Principal>
-            <Dependent Role="Tattoo">
-              <PropertyRef Name="IdTattooType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="TattooParlorModelStoreContainer">
           <EntitySet Name="BodyPart" EntityType="Self.BodyPart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
@@ -114,22 +66,6 @@
           <EntitySet Name="Tattoo" EntityType="Self.Tattoo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TattooType" EntityType="Self.TattooType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Request_BodyPart" Association="Self.FK_Request_BodyPart">
-            <End Role="BodyPart" EntitySet="BodyPart" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Request_Tattoo" Association="Self.FK_Request_Tattoo">
-            <End Role="Tattoo" EntitySet="Tattoo" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Request_User" Association="Self.FK_Request_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tattoo_TattoType" Association="Self.FK_Tattoo_TattoType">
-            <End Role="TattooType" EntitySet="TattooType" />
-            <End Role="Tattoo" EntitySet="Tattoo" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -142,22 +78,6 @@
           <EntitySet Name="Tattoo" EntityType="TattooParlorModel.Tattoo" />
           <EntitySet Name="TattooType" EntityType="TattooParlorModel.TattooType" />
           <EntitySet Name="User" EntityType="TattooParlorModel.User" />
-          <AssociationSet Name="FK_Request_BodyPart" Association="TattooParlorModel.FK_Request_BodyPart">
-            <End Role="BodyPart" EntitySet="BodyPart" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Request_Tattoo" Association="TattooParlorModel.FK_Request_Tattoo">
-            <End Role="Tattoo" EntitySet="Tattoo" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Request_User" Association="TattooParlorModel.FK_Request_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Tattoo_TattoType" Association="TattooParlorModel.FK_Tattoo_TattoType">
-            <End Role="TattooType" EntitySet="TattooType" />
-            <End Role="Tattoo" EntitySet="Tattoo" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="BodyPart">
           <Key>
@@ -165,7 +85,6 @@
           </Key>
           <Property Name="IdBodyPart" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Request" Relationship="TattooParlorModel.FK_Request_BodyPart" FromRole="BodyPart" ToRole="Request" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
@@ -176,9 +95,6 @@
           <Property Name="IdTattoo" Type="Int32" />
           <Property Name="IdBodyPart" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="BodyPart" Relationship="TattooParlorModel.FK_Request_BodyPart" FromRole="Request" ToRole="BodyPart" />
-          <NavigationProperty Name="Tattoo" Relationship="TattooParlorModel.FK_Request_Tattoo" FromRole="Request" ToRole="Tattoo" />
-          <NavigationProperty Name="User" Relationship="TattooParlorModel.FK_Request_User" FromRole="Request" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -198,8 +114,6 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IdTattooType" Type="Int32" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Request" Relationship="TattooParlorModel.FK_Request_Tattoo" FromRole="Tattoo" ToRole="Request" />
-          <NavigationProperty Name="TattooType" Relationship="TattooParlorModel.FK_Tattoo_TattoType" FromRole="Tattoo" ToRole="TattooType" />
         </EntityType>
         <EntityType Name="TattooType">
           <Key>
@@ -207,7 +121,6 @@
           </Key>
           <Property Name="IdTattoType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Tattoo" Relationship="TattooParlorModel.FK_Tattoo_TattoType" FromRole="TattooType" ToRole="Tattoo" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -219,56 +132,7 @@
           <Property Name="Age" Type="Int32" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Request" Relationship="TattooParlorModel.FK_Request_User" FromRole="User" ToRole="Request" />
         </EntityType>
-        <Association Name="FK_Request_BodyPart">
-          <End Type="TattooParlorModel.BodyPart" Role="BodyPart" Multiplicity="0..1" />
-          <End Type="TattooParlorModel.Request" Role="Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="BodyPart">
-              <PropertyRef Name="IdBodyPart" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="IdBodyPart" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Request_Tattoo">
-          <End Type="TattooParlorModel.Tattoo" Role="Tattoo" Multiplicity="0..1" />
-          <End Type="TattooParlorModel.Request" Role="Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tattoo">
-              <PropertyRef Name="IdTattoo" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="IdTattoo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Request_User">
-          <End Type="TattooParlorModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="TattooParlorModel.Request" Role="Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="IdUser" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="IdUser" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Tattoo_TattoType">
-          <End Type="TattooParlorModel.TattooType" Role="TattooType" Multiplicity="0..1" />
-          <End Type="TattooParlorModel.Tattoo" Role="Tattoo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TattooType">
-              <PropertyRef Name="IdTattoType" />
-            </Principal>
-            <Dependent Role="Tattoo">
-              <PropertyRef Name="IdTattooType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

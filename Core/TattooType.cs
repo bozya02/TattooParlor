@@ -14,16 +14,7 @@ namespace Core
     
     public partial class TattooType
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TattooType()
-        {
-            this.Tattoo = new HashSet<Tattoo>();
-        }
-    
         public int IdTattoType { get; set; }
         public string Name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Tattoo> Tattoo { get; set; }
     }
 }
