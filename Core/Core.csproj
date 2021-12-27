@@ -108,6 +108,7 @@
     <Compile Include="Request.cs">
       <DependentUpon>Tattoo.tt</DependentUpon>
     </Compile>
+    <Compile Include="SpecialRequest.cs" />
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Tattoo.tt</DependentUpon>
     </Compile>

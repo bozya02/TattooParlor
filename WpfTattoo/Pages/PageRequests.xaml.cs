@@ -21,14 +21,15 @@ namespace WpfTattoo.Pages
     /// </summary>
     public partial class PageRequests : Page
     {
-        public List<Request> requests { get; set; }
+        public List<SpecialRequest> Requests { get; set; }
         public User currentUser { get; set; }
+        
         public PageRequests(User user)
         {
             InitializeComponent();
             currentUser = user;
-            requests = DataAccess.GetRequests(currentUser);
 
+            Requests = DataAccess.GetSpecialRequests(currentUser);
             this.DataContext = this;
         }
 

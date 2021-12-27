@@ -23,7 +23,7 @@
 
         <Button Content="Back" Click="btnBackClick"/>
 
-        <ListView Grid.Column="1" Grid.Row="1" Margin="10" ItemsSource="{Binding requests}">
+        <ListView Grid.Column="1" Grid.Row="1" Margin="10" ItemsSource="{Binding Requests}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="2"/>
@@ -32,9 +32,9 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Tattoo.Name}"/>
-                        <Image Source="{Binding Tattoo.Image}" Width="100"/>
-                        <TextBlock Text="{Binding BodyPart.Name}"/>
+                        <TextBlock Text="{Binding TattooName}"/>
+                        <Image Source="{Binding TattooImage}" Width="100"/>
+                        <TextBlock Text="{Binding BodyPartName}"/>
                         <TextBlock Text="{Binding Date}"/>
                     </StackPanel>
                 </DataTemplate>

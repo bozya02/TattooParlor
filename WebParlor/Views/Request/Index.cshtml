@@ -1,0 +1,26 @@
+﻿@using Core
+@using System.Collections.Generic
+@model List<SpecialRequest>
+
+<h2>My Requests</h2>
+
+<div class="row">
+    @foreach (var request in Model)
+    {
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div>
+                        <img class="card-img-top" src="{@request.TattooImage}"
+                             alt="@request.TattooName" />
+                    </div>
+                    <h2 class="card-title text-center">@request.TattooName</h2>
+                    <div>
+                        <p class="font-weight-normal">@request.Date</p>
+                        <p class="font-weight-normal">@request.BodyPartName</p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

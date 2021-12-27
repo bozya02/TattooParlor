@@ -24,11 +24,6 @@ namespace WebParlor.Controllers
             return View(user);
         }
 
-        public IActionResult Privacy()
-        {
-            return View(DataAccess.GetBodyParts());
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

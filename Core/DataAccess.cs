@@ -72,6 +72,15 @@ namespace Core
             return currentUser;
         }
 
+        public static User GetUser(int idUser)
+        {
+            ObservableCollection<User> users = new ObservableCollection<User>(DBconnection.connection.User);
+
+            var currentUser = users.Where(u => u.IdUser == idUser).FirstOrDefault();
+
+            return currentUser;
+        }
+
         public static List<Tattoo> GetTattoos()
         {
             List<Tattoo> tattoo = new List<Tattoo>(DBconnection.connection.Tattoo);
@@ -226,6 +235,25 @@ namespace Core
             List<Request> requests = GetRequests();
             Request request = requests.Where(r => r.IdRequest == idRequest).FirstOrDefault();
             return request;
+        }
+
+        public static List<SpecialRequest> GetSpecialRequests(User user)
+        {
+            var requests = GetRequests(user);
+            List<SpecialRequest> Requests = new List<SpecialRequest>();
+            foreach (var r in requests)
+            {
+                Requests.Add(new SpecialRequest
+                {
+                    IdRequest = (int)r.IdRequest,
+                    IdUser = (int)r.IdUser,
+                    IdTattoo = (int)r.IdTattoo,
+                    IdBodyPart = (int)r.IdBodyPart,
+                    Date = (DateTime)r.Date
+                });
+            }
+
+            return Requests;
         }
     }
 }
