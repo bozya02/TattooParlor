@@ -1,0 +1,26 @@
+﻿@using Core;
+@{ Layout = "~/Views/Shared/_IndexLayout.cshtml";}
+@{
+    ViewData["Title"] = "Login";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h2>Login to the site</h2>
+
+<a asp-controller="Account">Регистрация</a>
+
+<form asp-action="Login" asp-controller="Account">
+    <div>
+        <div class="form-group">
+            <label name="Login">Login: </label>
+            <input type="text" name="Login" />
+        </div>
+        <div class="form-group">
+            <label name="Password">Password: </label>
+            <input type="password" name="Password" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Sign in" class="btn btn-outline-dark" />
+        </div>
+    </div>
+</form>
