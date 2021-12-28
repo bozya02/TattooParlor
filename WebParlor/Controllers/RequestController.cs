@@ -7,7 +7,20 @@ namespace WebParlor.Controllers
     {
         public IActionResult Index(User user)
         {
-            return View(DataAccess.GetSpecialRequests(user));
+            return View(user);
+        }
+
+        [HttpGet]
+        public IActionResult AddRequest(User user)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddRequest(Request request)
+        {
+            DataAccess.AddNewRequest(request);
+            return RedirectToAction("Index", request.IdUser);
         }
     }
 }

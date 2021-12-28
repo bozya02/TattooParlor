@@ -18,10 +18,9 @@ namespace WebParlor.Controllers
         {
             _logger = logger;
         }
-
-        public IActionResult Index(User user)
+        public IActionResult Index(int idUser)
         {
-            return View(user);
+            return View(DataAccess.GetUser(idUser));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

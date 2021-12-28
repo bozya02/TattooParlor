@@ -1,0 +1,37 @@
+﻿@using Core
+@model Request
+
+<h2>New request</h2>
+
+<form asp-action="Add" asp-controller="Request" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div class="form-group">
+            <label>Date</label><br />
+            <input type="date" asp-for="Date">
+        </div>
+        <div class="form-group">
+            <select asp-for="IdBodyPart">
+                @foreach (var bp in @DataAccess.GetBodyParts())
+                {
+                    <option value="@bp.IdBodyPart">@bp.Name</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <select asp-for="IdTattoo">
+                @foreach (var t in @DataAccess.GetTattoos())
+                {
+                    <option value="@t.IdTattoo">
+                        <p>@t.Name</p>
+                        <img class="card-img-top" src="@t.Image"
+                             alt="@t.Name" />
+                    </option>
+                } 
+            </select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-outline-dark" />
+        </div>
+    </div>
+</form>

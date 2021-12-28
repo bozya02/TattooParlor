@@ -17,7 +17,7 @@ namespace WebParlor.Controllers
 
             if (DataAccess.IsCorrectLogin(user.Login, user.Password))
             {
-                return RedirectToAction("Index", "Home", DataAccess.GetUser(user.Login, user.Password));
+                return RedirectToAction("Index", "Home", DataAccess.GetUser(user.Login, user.Password).IdUser);
             }
             ModelState.AddModelError("", "Invalid login or password");
             return View(user);
@@ -35,7 +35,7 @@ namespace WebParlor.Controllers
         {
             if (DataAccess.RegistrationUser(user))
             {
-                return RedirectToAction("Index", "Home", DataAccess.GetUser(user.Login, user.Password));
+                return RedirectToAction("Index", "Home", DataAccess.GetUser(user.Login, user.Password).IdUser);
             }
 
             ModelState.AddModelError("", "Invalid data");

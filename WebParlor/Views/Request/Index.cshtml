@@ -1,11 +1,17 @@
 ﻿@using Core
-@using System.Collections.Generic
-@model List<SpecialRequest>
+@using System.Collections.ObjectModel
+@model User
 
 <h2>My Requests</h2>
 
+<div class="row justify-content-end">
+    <a class="btn btn-primary" asp-controller="Request"
+       asp-action="AddRequest" asp-route-idUser="@Model.IdUser" role="button">Добавить</a>
+</div>
+<br/>
+
 <div class="row">
-    @foreach (var request in Model)
+    @foreach (var request in @DataAccess.GetSpecialRequests(Model))
     {
         <div class="col-md-4 mb-5">
             <div class="card h-100">

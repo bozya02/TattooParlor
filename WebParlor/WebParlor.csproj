@@ -5,12 +5,90 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\img\anime1.jpg" />
+    <Content Remove="wwwroot\img\anime2.jpg" />
+    <Content Remove="wwwroot\img\anime3.jpg" />
+    <Content Remove="wwwroot\img\anime4.jpg" />
+    <Content Remove="wwwroot\img\anime5.jpg" />
+    <Content Remove="wwwroot\img\anime6.jpg" />
+    <Content Remove="wwwroot\img\card1.jpg" />
+    <Content Remove="wwwroot\img\card2.jpg" />
+    <Content Remove="wwwroot\img\card3.jpg" />
+    <Content Remove="wwwroot\img\card4.jpg" />
+    <Content Remove="wwwroot\img\card5.jpg" />
+    <Content Remove="wwwroot\img\card6.jpg" />
+    <Content Remove="wwwroot\img\joker1.jpg" />
+    <Content Remove="wwwroot\img\joker2.jpg" />
+    <Content Remove="wwwroot\img\joker3.jpg" />
+    <Content Remove="wwwroot\img\joker4.jpg" />
+    <Content Remove="wwwroot\img\joker5.jpg" />
+    <Content Remove="wwwroot\img\joker6.jpg" />
+    <Content Remove="wwwroot\img\rose1.jpg" />
+    <Content Remove="wwwroot\img\rose2.jpg" />
+    <Content Remove="wwwroot\img\rose3.jpg" />
+    <Content Remove="wwwroot\img\rose4.jpg" />
+    <Content Remove="wwwroot\img\rose5.jpg" />
+    <Content Remove="wwwroot\img\rose6.jpg" />
+    <Content Remove="wwwroot\img\triangle1.jpg" />
+    <Content Remove="wwwroot\img\triangle2.jpg" />
+    <Content Remove="wwwroot\img\triangle3.jpg" />
+    <Content Remove="wwwroot\img\triangle4.jpg" />
+    <Content Remove="wwwroot\img\triangle5.jpg" />
+    <Content Remove="wwwroot\img\triangle6.jpg" />
+    <Content Remove="wwwroot\img\wolf1.jpg" />
+    <Content Remove="wwwroot\img\wolf2.jpg" />
+    <Content Remove="wwwroot\img\wolf3.jpg" />
+    <Content Remove="wwwroot\img\wolf4.jpg" />
+    <Content Remove="wwwroot\img\wolf5.jpg" />
+    <Content Remove="wwwroot\img\wolf6.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="wwwroot\img\anime1.jpg" />
+    <Resource Include="wwwroot\img\anime2.jpg" />
+    <Resource Include="wwwroot\img\anime3.jpg" />
+    <Resource Include="wwwroot\img\anime4.jpg" />
+    <Resource Include="wwwroot\img\anime5.jpg" />
+    <Resource Include="wwwroot\img\anime6.jpg" />
+    <Resource Include="wwwroot\img\card1.jpg" />
+    <Resource Include="wwwroot\img\card2.jpg" />
+    <Resource Include="wwwroot\img\card3.jpg" />
+    <Resource Include="wwwroot\img\card4.jpg" />
+    <Resource Include="wwwroot\img\card5.jpg" />
+    <Resource Include="wwwroot\img\card6.jpg" />
+    <Resource Include="wwwroot\img\joker1.jpg" />
+    <Resource Include="wwwroot\img\joker2.jpg" />
+    <Resource Include="wwwroot\img\joker3.jpg" />
+    <Resource Include="wwwroot\img\joker4.jpg" />
+    <Resource Include="wwwroot\img\joker5.jpg" />
+    <Resource Include="wwwroot\img\joker6.jpg" />
+    <Resource Include="wwwroot\img\rose1.jpg" />
+    <Resource Include="wwwroot\img\rose2.jpg" />
+    <Resource Include="wwwroot\img\rose3.jpg" />
+    <Resource Include="wwwroot\img\rose4.jpg" />
+    <Resource Include="wwwroot\img\rose5.jpg" />
+    <Resource Include="wwwroot\img\rose6.jpg" />
+    <Resource Include="wwwroot\img\triangle1.jpg" />
+    <Resource Include="wwwroot\img\triangle2.jpg" />
+    <Resource Include="wwwroot\img\triangle3.jpg" />
+    <Resource Include="wwwroot\img\triangle4.jpg" />
+    <Resource Include="wwwroot\img\triangle5.jpg" />
+    <Resource Include="wwwroot\img\triangle6.jpg" />
+    <Resource Include="wwwroot\img\wolf1.jpg" />
+    <Resource Include="wwwroot\img\wolf2.jpg" />
+    <Resource Include="wwwroot\img\wolf3.jpg" />
+    <Resource Include="wwwroot\img\wolf4.jpg" />
+    <Resource Include="wwwroot\img\wolf5.jpg" />
+    <Resource Include="wwwroot\img\wolf6.jpg" />
   </ItemGroup>
 
 </Project>

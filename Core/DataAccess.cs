@@ -101,23 +101,26 @@ namespace Core
 
         public static void DeleteRequest(int idRequest)
         {
-            Request request = GetRequest(idRequest);
-
+            Request request = DBconnection.connection.Request.FirstOrDefault(p => p.IdRequest == idRequest);
             DBconnection.connection.Request.Remove(request);
             DBconnection.connection.SaveChanges();
         }
 
-        public static void UpdtaeRequest(int idRequest, Request request)
+        public static void DeleteTattoo(int idTattoo)
         {
-            DBconnection.connection.Request.SingleOrDefault(r => r.IdRequest == idRequest);
+            DBconnection.connection.Tattoo.Remove(GetTattoo(idTattoo));
             DBconnection.connection.SaveChanges();
-
         }
 
-        public static void DeleteRequest(Request request)
+        public static void UpdtaeRequest(Request request)
         {
-            DBconnection.connection.Request.Remove(request);
+            var req = DBconnection.connection.Request.SingleOrDefault(r => r.IdRequest == request.IdRequest);
+            req.IdBodyPart = request.IdBodyPart;
+            req.IdTattoo = request.IdTattoo;
+            req.IdUser = request.IdUser;
+            req.Date = request.Date;
             DBconnection.connection.SaveChanges();
+
         }
 
         public static bool RegistrationUser(User user)
@@ -170,43 +173,30 @@ namespace Core
             }
         }
 
-        public static List<Request> GetRequests()
+        public static ObservableCollection<Request> GetRequests()
         {
-            List<Request> request = new List<Request>(DBconnection.connection.Request);
-            List<Request> requests = new List<Request>();
-            foreach (var r in request)
-            {
-                requests.Add(
-                    new Request
-                    {
-                        IdRequest = r.IdRequest,
-                        IdBodyPart = r.IdBodyPart,
-                        IdTattoo = r.IdTattoo,
-                        IdUser = r.IdUser,
-                        Date = r.Date
-                    });
-            }
+            ObservableCollection<Request> requests = new ObservableCollection<Request>(DBconnection.connection.Request);
             return requests;
         }
 
         public static List<Request> GetRequests(User user)
         {
-            List<Request> requests = GetRequests();
+            ObservableCollection<Request> requests = GetRequests();
             List<Request> currentUserRequests = requests.Where(r => r.IdUser == user.IdUser).ToList();
             return currentUserRequests;
         }
 
         public static Request GetRequest(int idRequest)
         {
-            List<Request> requests = GetRequests();
+            ObservableCollection<Request> requests = GetRequests();
             Request request = requests.Where(r => r.IdRequest == idRequest).FirstOrDefault();
             return request;
         }
 
-        public static List<SpecialRequest> GetSpecialRequests(User user)
+        public static ObservableCollection<SpecialRequest> GetSpecialRequests(User user)
         {
             var requests = GetRequests(user);
-            List<SpecialRequest> Requests = new List<SpecialRequest>();
+            ObservableCollection<SpecialRequest> Requests = new ObservableCollection<SpecialRequest>();
             foreach (var r in requests)
             {
                 Requests.Add(new SpecialRequest
