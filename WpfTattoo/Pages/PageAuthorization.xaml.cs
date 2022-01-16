@@ -26,7 +26,7 @@ namespace WpfTattoo.Pages
             InitializeComponent();
         }
 
-        private void btnSignUpClick(object sender, RoutedEventArgs e)
+        private void btnSignUpClick(object sender, RoutedEventArgs e)       //Желательно исправить: Методы дожны именоваться с заглавной буквы (Мясников, Сематкин) 
         {
             NavigationService.Navigate(new Pages.PageRegistration());
         }

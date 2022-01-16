@@ -38,7 +38,7 @@ namespace WpfTattoo.Windows
 
         private void cbTattooTypeSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var t = cbTattooType.SelectedItem as TattooType;
+            var t = cbTattooType.SelectedItem as TattooType;        //Обязательно исправить: невнятное название переменной (Мясников, Сематкин) 
             tattoos = DataAccess.GetTattoos(t.IdTattoType);
             lvTattoos.ItemsSource = tattoos;
         }

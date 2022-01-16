@@ -6,7 +6,7 @@ namespace ApiTattoo.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RequestController : Controller
+    public class RequestController : Controller         //Хорошо: компактные методы (Мясников, Сематкин)
     {
         [HttpGet]
         public IEnumerable<Request> Get()

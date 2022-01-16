@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core
 {
-    public class SpecialRequest
+    public class SpecialRequest     //Обязательно исправить: поля класса публичны, отсутсвует конструктор (Мясников, Сематкин)
     {
         public int IdRequest { get; set; }
         public int IdUser { get; set; }

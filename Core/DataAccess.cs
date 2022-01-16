@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 namespace Core
 {
-    public static class DataAccess
+    public static class DataAccess       //Хорошо: Простые методы (Мясников, Сематкин) 
     {
         public static ObservableCollection<TattooType> GetTattooTypes()
         {
@@ -36,7 +36,7 @@ namespace Core
 
         public static bool IsCorrectLogin(string login, string password)
         {
-            ObservableCollection<User> users = new ObservableCollection<User>(DBconnection.connection.User);
+            ObservableCollection<User> users = new ObservableCollection<User>(DBconnection.connection.User);        //Обязательно исправить: дублирование кода (Мясников, Сематкин) 
 
             var currentUser = users.Where(u => u.Login == login && u.Password == password).ToList();
 
@@ -45,7 +45,7 @@ namespace Core
 
         public static User GetUser(string login, string password)
         {
-            ObservableCollection<User> users = new ObservableCollection<User>(DBconnection.connection.User);
+            ObservableCollection<User> users = new ObservableCollection<User>(DBconnection.connection.User);        //Обязательно исправить: дублирование кода (Мясников, Сематкин) 
 
             var currentUser = users.Where(u => u.Login == login && u.Password == password).FirstOrDefault();
 

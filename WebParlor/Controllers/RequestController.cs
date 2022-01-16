@@ -11,7 +11,7 @@ namespace WebParlor.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddRequest(User user)
+        public IActionResult AddRequest(User user)      //Обязательно исправить: неиспользуемый аргумент метода (Мясников, Сематкин) 
         {
             return View();
         }

@@ -35,7 +35,7 @@ namespace WpfTattoo.Pages
         private void btnTattooClick(object sender, RoutedEventArgs e)
         {
             Windows.WindowSelectTattoo dialog = new Windows.WindowSelectTattoo();
-            if (dialog.ShowDialog() == true)
+            if (dialog.ShowDialog() == true)        //Желательно исправить: необязавтельное сравнение (Мясников, Сематкин) 
             {
                 btnTattoo.Content = $"{(dialog.lvTattoos.SelectedItem as Tattoo).Name}";
             }

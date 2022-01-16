@@ -29,7 +29,7 @@ namespace WpfTattoo.Pages
             InitializeComponent();
             currentUser = user;
 
-            Requests = DataAccess.GetSpecialRequests(currentUser);
+            Requests = DataAccess.GetSpecialRequests(currentUser);      //Обязательно исправить: ошибка компиляции (Мясников, Сематкин) 
             this.DataContext = this;
         }
 
