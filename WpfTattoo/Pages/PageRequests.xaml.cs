@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Core;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace WpfTattoo.Pages
 {
@@ -21,7 +23,7 @@ namespace WpfTattoo.Pages
     /// </summary>
     public partial class PageRequests : Page
     {
-        public List<SpecialRequest> Requests { get; set; }
+        public ObservableCollection<SpecialRequest> Requests { get; set; }
         public User currentUser { get; set; }
         
         public PageRequests(User user)
@@ -36,6 +38,36 @@ namespace WpfTattoo.Pages
         private void btnBackClick(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();
+        }
+
+        private void btnExportClick(object sender, RoutedEventArgs e)
+        {
+            var application = new Excel.Application();
+            Excel.Workbook workbook = application.Workbooks.Add(Type.Missing);
+            Excel.Worksheet worksheet = application.Worksheets.Item[1];
+            worksheet.Name = "Requests";
+
+            int startRowIndex = 1;
+
+            worksheet.Cells[1][startRowIndex] = "IdRequest";
+            worksheet.Cells[2][startRowIndex] = "IdUser";
+            worksheet.Cells[3][startRowIndex] = "IdTattoo";
+            worksheet.Cells[4][startRowIndex] = "IdBodyPart";
+            worksheet.Cells[5][startRowIndex] = "Date";
+
+            for (int i = 0; i < Requests.Count(); i++)
+            {
+                ++startRowIndex;
+                worksheet.Cells[1][startRowIndex] = Requests[i].IdRequest;
+                worksheet.Cells[2][startRowIndex] = Requests[i].IdUser;
+                worksheet.Cells[3][startRowIndex] = Requests[i].IdTattoo;
+                worksheet.Cells[4][startRowIndex] = Requests[i].IdBodyPart;
+                worksheet.Cells[5][startRowIndex] = Requests[i].Date;
+            }
+
+            worksheet.Columns.AutoFit();
+
+            application.Visible = true;
         }
     }
 }
