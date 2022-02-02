@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Core;
 using Excel = Microsoft.Office.Interop.Excel;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace WpfTattoo.Pages
 {
@@ -40,7 +41,7 @@ namespace WpfTattoo.Pages
             NavigationService.GoBack();
         }
 
-        private void btnExportClick(object sender, RoutedEventArgs e)
+        private void btnExcelClick(object sender, RoutedEventArgs e)
         {
             var application = new Excel.Application();
             Excel.Workbook workbook = application.Workbooks.Add(Type.Missing);
@@ -66,6 +67,14 @@ namespace WpfTattoo.Pages
             }
 
             worksheet.Columns.AutoFit();
+
+            application.Visible = true;
+        }
+
+        private void btnWordClick(object sender, RoutedEventArgs e)
+        {
+            var application = new Word.Application();
+            Word.Document document = application.Documents.Add();
 
             application.Visible = true;
         }

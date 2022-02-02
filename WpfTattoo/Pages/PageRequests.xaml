@@ -41,8 +41,8 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Orientation="Vertical">
-            <Button Content="Excel" Click="btnExportClick" Margin="0,0,0,10" FontSize="30"/>
-            <Button Content="Word" Click="btnExportClick" Margin="0,10,0,0" FontSize="30"/>
+            <Button Content="Excel" Click="btnExcelClick" Margin="0,0,0,10" FontSize="30"/>
+            <Button Content="Word" Click="btnWordClick" Margin="0,10,0,0" FontSize="30"/>
         </StackPanel>
     </Grid>
 </Page>
